@@ -7,17 +7,17 @@
 //const y = { ...x, d: 4 };
 //console.log(y);
 
-struct Object {
+typedef struct {
     char *keys[MAX_KEYS];
     int values[MAX_KEYS];
     int count;
-};
+} Object;
 
-void initObject(struct Object *obj) {
-    memset(obj, 0, sizeof(struct Object));
+void initObject(Object *obj) {
+    memset(obj, 0, sizeof(Object));
 }
 
-void setObject(struct Object *obj, char *key, int value) {
+void setObject(Object *obj, char *key, int value) {
     int i;
     for (i = 0; i < obj->count; i++) {
         if (strcmp(key, obj->keys[i]) == 0) {
@@ -31,13 +31,13 @@ void setObject(struct Object *obj, char *key, int value) {
 }
 
 int main() {
-    struct Object x;
+    Object x;
     initObject(&x);
     setObject(&x, "a", 1);
     setObject(&x, "b", 2);
     setObject(&x, "c", 3);
 
-    struct Object y;
+    Object y;
     initObject(&y);
     int i;
     for (i = 0; i < x.count; i++) {
